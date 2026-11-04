@@ -22,13 +22,13 @@
 | ---------- | --------- | ----------- | -------------------- |
 | C#         | Álvaro Luiz Barbalho de Souza Filho<br>Paulo Cesar Moreira da Silva<br>Pedro Messias Dias Neto | [github](https://github.com/moreirasilva1-tech/2026-2-Bimestre-1-Atividade-3) | 06 |
 | C++        | Artur Lima Melo<br>Arthur Vinicius Barreto Demetrio<br>Caio Lucas Alves de Oliveira            | [github](https://github.com/ArturLimaMelo/2026-2-Bimestre-1-Atividade-3) | 09 |
-| Clojure    | Geovanna Negreiros de Araújo<br>Haama Kethelen Souza Reis<br>Lucas Natanael de Andrade Mota    | [github](https://github.com/geovanna193/Atividade-3-S.O) | 03 |
+| Clojure    | Geovanna Negreiros de Araújo<br>Haama Kethelen Souza Reis<br>Lucas Natanael de Andrade Mota    | [github](https://github.com/geovanna193/Atividade-3-S.O) | 03#06 - 05/11/2026 |
 | Elixir     | Daniel Araujo Azevedo<br>Fábio Hudson Gomes de Souza<br>Rafael Duarte da Silva de Brito        | [github](https://github.com/RafaelDuarteSilvaIFRN/2026-2-Bimestre-1-Atividade-3) | 07#02 - 05/11/2026 |
 | F#         | Arthur Santos Aquino<br>João Ricardo Fernandes de Almeida<br>Ítalo Bruno de Lima Melo          | [github](https://github.com/joao-rick/Ativ3-FSharp) | 01 |
-| Go         | João Victor Marques Campos<br>Rio Ribeiro da Silva<br>Wheverton Cruz da Silva Filho            | [github](https://github.com/rioribeiro/2026-2-Bimestre-1-Atividade-3) | 04 |
+| Go         | João Victor Marques Campos<br>Rio Ribeiro da Silva<br>Wheverton Cruz da Silva Filho            | [github](https://github.com/rioribeiro/2026-2-Bimestre-1-Atividade-3) | 04#04 - 05/11/2026 |
 | Java       | Guilherme da Silva Cruz<br>José Vine Nunes Martins Araújo<br>Maria Clara Batista Viana Silva   | [github](https://github.com/cruzguilherme1-rpg/Fork-atividade-avaliativa_03_java) | 28/10/2026 |
 | Kotlin     | Ana Letícia Vidal de Oliveira<br>Iago Vinícius Souza de Sales<br>Valentine Varela              | [github](https://github.com/Iago-pixel/2026-2-Bimestre-1-Atividade-3) | #01 - 05/11/2026 |
 | Lua        | Andre Medeiros Silva<br>Denju Gabriel da Silva Lira<br>Lucas Gabryel Silva de Holanda          | [github](https://github.com/Andremdrs77/2026-2-Bimestre-1-Atividade-3) | 02#03 - 05/11/2026 |
-| Rust       | [Julia Rafaelly Siqueira de Lima](https://github.com/JuliaRafaellySdL/)<br>[Lidia Rebeka da Silva Fernandes](https://github.com/rebekafernandes-cyber/)<br>[Lyonara da Silva Camelo](https://github.com/Lyonara/)  | [github](https://github.com/JuliaRafaellySdL/2026-2-Bimestre-1-Atividade-3-Rust) | 08 |
+| Rust       | [Julia Rafaelly Siqueira de Lima](https://github.com/JuliaRafaellySdL/)<br>[Lidia Rebeka da Silva Fernandes](https://github.com/rebekafernandes-cyber/)<br>[Lyonara da Silva Camelo](https://github.com/Lyonara/)  | [github](https://github.com/JuliaRafaellySdL/2026-2-Bimestre-1-Atividade-3-Rust) | 08#05 - 05/11/2026 |
 | Typescript | Arkângelo Maycon Ashley da Silva Barbosa<br>Jadson de Medeiros Souza<br>Luiz Rodrigues da Silveira Neto | [github](https://github.com/Arkangelo00/2026-2-Bimestre-1-Atividade-3) | 05 |
 
