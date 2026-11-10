@@ -12,7 +12,7 @@
 ## Tarefas
 1. Montar os grupos;
 2. Fork desse repositório (cada membro pode ter seu repositório _forked_ mas apenas terá um link aqui);
-3. Fazer um `pull request` atualizando esse arquivo README.md com a URL do repositório oficial da equipe 
+3. Fazer um `pull request` atualizando esse arquivo README.md com a URL do repositório oficial da equipe
 4. Na linguagem escolhida, implementar código correspondente ao python deste respositório (**use o docker para executar os códigos**);
 5. Modificar o arquivo `relato.md` relatando a experiência da implementação.
 
@@ -30,5 +30,6 @@
 | Kotlin     | Ana Letícia Vidal de Oliveira<br>Iago Vinícius Souza de Sales<br>Valentine Varela              | [github](https://github.com/Iago-pixel/2026-2-Bimestre-1-Atividade-3) | #01 - 04/11/2026 |
 | Lua        | Andre Medeiros Silva<br>Denju Gabriel da Silva Lira<br>Lucas Gabryel Silva de Holanda          | [github](https://github.com/Andremdrs77/2026-2-Bimestre-1-Atividade-3) | 02#03 - 04/11/2026 |
 | Rust       | [Julia Rafaelly Siqueira de Lima](https://github.com/JuliaRafaellySdL/)<br>[Lidia Rebeka da Silva Fernandes](https://github.com/rebekafernandes-cyber/)<br>[Lyonara da Silva Camelo](https://github.com/Lyonara/)  | [github](https://github.com/JuliaRafaellySdL/2026-2-Bimestre-1-Atividade-3-Rust) | 08#05 - 04/11/2026 |
+| Scala      | Loíde Barros Fragoso<br>Angelo Evaristo Porfirio<br>Caio Arthur Cardozo da Silva | [github](https://github.com/Caioxx08/2026-2-Bimestre-1-Atividade-3) | A definir |
 | Typescript | Arkângelo Maycon Ashley da Silva Barbosa<br>Jadson de Medeiros Souza<br>Luiz Rodrigues da Silveira Neto | [github](https://github.com/Arkangelo00/2026-2-Bimestre-1-Atividade-3) | 05 |
 
