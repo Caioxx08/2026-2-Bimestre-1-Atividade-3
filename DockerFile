@@ -1,0 +1,14 @@
+FROM eclipse-temurin:17-jdk
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl gzip mawk \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -fL https://github.com/VirtusLab/scala-cli/releases/download/v1.8.1/scala-cli-x86_64-pc-linux.gz -o /tmp/scala-cli.gz \
+    && gunzip /tmp/scala-cli.gz \
+    && install /tmp/scala-cli /usr/local/bin/scala \
+    && rm /tmp/scala-cli
+
+WORKDIR /app
+COPY . .
+
+CMD ["scala", "run", "src/scala/ThreadsDemo.scala"]
