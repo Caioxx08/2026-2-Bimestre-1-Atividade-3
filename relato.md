@@ -52,8 +52,6 @@ Para executar a demonstração dentro do contêiner, utilize:
 docker run --rm atividade3-scala scala run src/scala/ProcessosDemo.scala
 ```
 
-O resultado esperado é a exibição das três mensagens recebidas pelo processo filho e do código de encerramento do processo.
-
 
 ### Comunicação entre tarefas em processos diferentes em computadores diferentes
 
