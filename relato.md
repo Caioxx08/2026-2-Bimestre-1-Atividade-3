@@ -37,7 +37,6 @@ docker run --rm atividade3-scala
 
 A saída apresenta mensagens do produtor e do consumidor. A ordem exata pode variar entre execuções, pois as threads são concorrentes. O resultado esperado é que os números de 1 a 10 sejam produzidos e recebidos, seguido da mensagem de encerramento.
 
-**Registro de execução:** inserir aqui uma captura de tela do terminal após executar os comandos no computador do grupo. A execução ainda precisa ser validada pelos integrantes.
 
 ### Comunicação entre tarefas em processos diferentes no mesmo computador
 
@@ -55,7 +54,6 @@ docker run --rm atividade3-scala scala run src/scala/ProcessosDemo.scala
 
 O resultado esperado é a exibição das três mensagens recebidas pelo processo filho e do código de encerramento do processo.
 
-**Registro de execução:** inserir aqui a captura de tela da execução real. O comando depende de a imagem já ter sido construída com o Dockerfile deste repositório.
 
 ### Comunicação entre tarefas em processos diferentes em computadores diferentes
 
@@ -81,13 +79,10 @@ docker run --rm atividade3-scala scala run src/scala/TcpDemo.scala -- cliente IP
 
 O resultado esperado é que o servidor mostre as mensagens enviadas pelo cliente e que o cliente mostre as respostas do servidor. Executar os dois contêineres na mesma máquina pode servir para um teste inicial de sockets, mas não comprova comunicação entre computadores diferentes.
 
-**Registro de execução:** inserir capturas de tela do servidor e do cliente executados em computadores distintos. Esta etapa precisa ser realizada e validada pelo grupo em duas máquinas.
 
 ### Problemas encontrados e soluções
 
-A configuração de ferramentas e permissões do Docker pode variar de uma máquina para outra. Caso apareça uma mensagem de permissão negada ao acessar o Docker, é necessário verificar se o serviço está ativo e se o usuário possui permissão para utilizá-lo. Também é importante confirmar que a porta 5000 está disponível e liberada no firewall para o teste TCP.
-
-Os exemplos deste relatório foram adicionados ao repositório, mas os comandos e resultados descritos como esperados ainda precisam ser executados e registrados pelo grupo. Portanto, não se afirma que os testes foram concluídos sem a validação prática.
+Nosso maior problema no desenvolvimento do trabalho, foi por não sabermos utilizar com tanto domínio a linguagem java, já que ela é a base para scala como mostramos.
 
 ## Considerações finais
 
