@@ -26,13 +26,44 @@ A thread produtora insere os números de 1 a 10 na fila. A thread consumidora re
 
 O tipo `Option[Int]` permite utilizar `Some(numero)` para representar um dado e `None` como sinal de encerramento. Depois de inserir todos os números, a produtora coloca esse sinal na fila. Ao recebê-lo, a consumidora encerra o laço. Por fim, o método `join()` faz a thread principal aguardar a finalização das duas threads.
 
-Código completo: [src/scala/ProdutorConsumidor.scala](src/scala/ProdutorConsumidor.scala).
-
-Para construir a imagem e executar o programa:
-
 ```bash
-docker build -t atividade3-scala .
-docker run --rm atividade3-scala
+import java.util.concurrent.ArrayBlockingQueue
+
+object ProdutorConsumidor:
+
+  // Fila limitada compartilhada pelas duas threads.
+  private val fila = new ArrayBlockingQueue[Option[Int]](5)
+
+  def main(args: Array[String]): Unit =
+    val produtor = new Thread(() =>
+      for numero <- 1 to 10 do
+        fila.put(Some(numero))
+        println(s"Produtor: produziu $numero")
+
+      // None representa o fim da produção.
+      fila.put(None)
+      println("Produtor: encerrou a produção")
+    )
+
+    val consumidor = new Thread(() =>
+      var continuar = true
+
+      while continuar do
+        fila.take() match
+          case Some(numero) =>
+            println(s"Consumidor: recebeu $numero")
+          case None =>
+            println("Consumidor: recebeu o sinal de encerramento")
+            continuar = false
+    )
+
+    produtor.start()
+    consumidor.start()
+
+    produtor.join()
+    consumidor.join()
+
+    println("Programa finalizado.")
 ```
 
 A saída apresenta mensagens do produtor e do consumidor. A ordem exata pode variar entre execuções, pois as threads são concorrentes. O resultado esperado é que os números de 1 a 10 sejam produzidos e recebidos, seguido da mensagem de encerramento.
