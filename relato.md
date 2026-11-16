@@ -20,7 +20,7 @@ A configuração está definida no arquivo `Dockerfile`. A imagem base é `eclip
 
 ### Comunicação entre tarefas com linhas de execução no mesmo processo
 
-A implementação principal está em `src/scala/ProdutorConsumidor.scala`. O programa utiliza duas threads: uma produtora e outra consumidora. A comunicação ocorre por meio de uma fila compartilhada do tipo `ArrayBlockingQueue`, com capacidade limitada a cinco elementos.
+O programa utiliza duas threads: uma produtora e outra consumidora. A comunicação ocorre por meio de uma fila compartilhada do tipo `ArrayBlockingQueue`, com capacidade limitada a cinco elementos.
 
 A thread produtora insere os números de 1 a 10 na fila. A thread consumidora retira os elementos e os apresenta no terminal. Como a fila é bloqueante, a operação de retirada aguarda quando não há elementos disponíveis e a operação de inserção aguarda quando a fila está cheia. Isso permite sincronizar as duas threads sem precisar implementar manualmente o controle de acesso à fila.
 
@@ -71,7 +71,7 @@ A saída apresenta mensagens do produtor e do consumidor. A ordem exata pode var
 
 ### Comunicação entre tarefas em processos diferentes no mesmo computador
 
-A demonstração está no arquivo `src/scala/ProcessosDemo.scala`. O programa inicia uma segunda execução de si mesmo por meio de `ProcessBuilder`. Assim, existem dois processos independentes: o processo pai e o processo filho.
+O programa inicia uma segunda execução de si mesmo por meio de `ProcessBuilder`. Assim, existem dois processos independentes: o processo pai e o processo filho.
 
 O processo pai envia três mensagens ao processo filho por meio da entrada padrão do processo (`stdin`). O filho lê cada linha recebida e escreve uma resposta na saída padrão (`stdout`). O pai lê essa saída e a apresenta no terminal. O fechamento do fluxo de entrada indica ao filho que não há mais mensagens.
 
@@ -129,28 +129,75 @@ object ProcessosDemo:
 
 ### Comunicação entre tarefas em processos diferentes em computadores diferentes
 
-Para demonstrar a comunicação por rede, foi criado o arquivo `src/scala/TcpDemo.scala`. Ele utiliza sockets TCP, permitindo que dois programas em execução em máquinas diferentes troquem mensagens pela rede.
+Ele utiliza sockets TCP, permitindo que dois programas em execução em máquinas diferentes troquem mensagens pela rede.
 
 O programa possui dois modos. No modo servidor, cria um `ServerSocket` na porta 5000 e aguarda uma conexão. Quando um cliente se conecta, o servidor lê as mensagens recebidas e envia uma resposta para cada uma. No modo cliente, o programa conecta-se ao endereço IP do servidor, envia mensagens e apresenta as respostas recebidas.
 
-Código completo: [src/scala/TcpDemo.scala](src/scala/TcpDemo.scala).
-
-Para testar em computadores diferentes, primeiro construa a imagem em ambas as máquinas. No computador que atuará como servidor, execute:
 
 ```bash
-docker run --rm -p 5000:5000 atividade3-scala scala run src/scala/TcpDemo.scala -- servidor
+import java.io.{BufferedReader, InputStreamReader, PrintWriter}
+import java.net.{ServerSocket, Socket}
+import java.nio.charset.StandardCharsets
+
+object TcpDemo:
+
+  def main(args: Array[String]): Unit =
+    args.headOption match
+      case Some("servidor") => executarServidor()
+      case Some("cliente") if args.length >= 2 => executarCliente(args(1))
+      case _ =>
+        println("Uso:")
+        println("  scala run src/scala/TcpDemo.scala -- servidor")
+        println("  scala run src/scala/TcpDemo.scala -- cliente IP_DO_SERVIDOR")
+
+  private def executarServidor(): Unit =
+    val servidor = new ServerSocket(5000)
+    println("Servidor aguardando conexão na porta 5000...")
+
+    try
+      val socket = servidor.accept()
+      println(s"Cliente conectado: ${socket.getInetAddress.getHostAddress}")
+
+      val entrada = new BufferedReader(
+        new InputStreamReader(socket.getInputStream, StandardCharsets.UTF_8)
+      )
+      val saida = new PrintWriter(socket.getOutputStream, true, StandardCharsets.UTF_8)
+
+      try
+        var linha = entrada.readLine()
+        while linha != null do
+          println(s"Servidor recebeu: $linha")
+          saida.println(s"Mensagem recebida: $linha")
+          linha = entrada.readLine()
+      finally
+        entrada.close()
+        saida.close()
+        socket.close()
+    finally
+      servidor.close()
+
+  private def executarCliente(host: String): Unit =
+    val socket = new Socket(host, 5000)
+    val saida = new PrintWriter(socket.getOutputStream, true, StandardCharsets.UTF_8)
+    val entrada = new BufferedReader(
+      new InputStreamReader(socket.getInputStream, StandardCharsets.UTF_8)
+    )
+
+    try
+      List("Olá, servidor!", "Esta mensagem foi enviada por TCP.").foreach(saida.println)
+      socket.shutdownOutput()
+
+      var resposta = entrada.readLine()
+      while resposta != null do
+        println(s"Resposta do servidor: $resposta")
+        resposta = entrada.readLine()
+    finally
+      entrada.close()
+      saida.close()
+      socket.close()
 ```
 
-No outro computador, substitua `IP_DO_SERVIDOR` pelo endereço IP local da máquina servidora:
-
-```bash
-docker run --rm atividade3-scala scala run src/scala/TcpDemo.scala -- cliente IP_DO_SERVIDOR
-```
-
-É necessário que as duas máquinas estejam conectadas à rede e que a porta TCP 5000 esteja liberada no firewall do servidor. A opção `-p 5000:5000` publica a porta do contêiner no computador servidor.
-
-O resultado esperado é que o servidor mostre as mensagens enviadas pelo cliente e que o cliente mostre as respostas do servidor. Executar os dois contêineres na mesma máquina pode servir para um teste inicial de sockets, mas não comprova comunicação entre computadores diferentes.
-
+O resultado ideal é que o servidor mostre as mensagens enviadas pelo cliente e que o cliente mostre as respostas do servidor. 
 
 ### Problemas encontrados e soluções
 
